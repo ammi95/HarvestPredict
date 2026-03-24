@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - HarvestPredict</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+
+            <!-- Logo -->
+            <div class="logo">
+                <a href="/"><img src="assets/images/logo.png" alt=""></a>
+            </div>
+
+            <!-- Nav Links -->
+            <nav class="nav-links" id="navLinks">
+                <a href="/">Home</a>
+                <a href="/#features">Features</a>
+                <a href="/#architecture">Architecture</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="contact.html">contact</a>
+            </nav>
+
+            <!-- Right Buttons -->
+            <div class="nav-actions">
+                <a href="login.html" class="login">Login</a>
+                <a href="javascript:void(0)" class="btn-primary" onclick="openModal()">Get Started</a>
+            </div>
+
+            <!-- Mobile Menu Icon -->
+            <div class="menu-toggle" id="menuToggle">
+                ☰
+            </div>
+
+        </div>
+    </header>
+    <section class="contact">
+
+        <!-- Background Glow -->
+        <div class="bg-blur"></div>
+
+        <div class="contact-wrapper">
+
+            <!-- LEFT -->
+            <div class="contact-left">
+                <h1>Let’s Talk 👋</h1>
+                <p>We’d love to hear from you. Send us a message and we’ll respond quickly.</p>
+
+                <div class="contact-details">
+                    <div>📧 support@harvestpredict.com</div>
+                    <div>📍 India</div>
+                </div>
+            </div>
+
+            <!-- RIGHT FORM -->
+            <div class="contact-card">
+                <form id="contactForm">
+
+                    <div class="input-group">
+                        <input type="text" id="name" required>
+                        <label>Full Name</label>
+                        <span class="error"></span>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="email" id="email" required>
+                        <label>Email Address</label>
+                        <span class="error"></span>
+                    </div>
+
+                    <div class="input-group">
+                        <textarea id="message" required></textarea>
+                        <label>Your Message</label>
+                        <span class="error"></span>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <span class="btn-text">Send Message</span>
+                        <span class="loader"></span>
+                    </button>
+
+                    <div id="successMsg"></div>
+
+                </form>
+            </div>
+
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- Column 1 -->
+            <div class="footer-col">
+                <h3>Product</h3>
+                <ul>
+                    <li><a href="/#features">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <!-- <li><a href="#">API</a></li> -->
+                </ul>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="footer-col">
+                <h3>Company</h3>
+                <ul>
+                    <!-- <li><a href="#">About</a></li> -->
+                    <li><a href="/#Architecture">Architecture</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Docs</a></li>
+                    <!-- <li><a href="#">Blog</a></li> -->
+                    <li><a href="contact.html">Help Center</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4 -->
+            <div class="footer-col">
+                <h3>Social</h3>
+                <ul>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Bottom -->
+        <div class="footer-bottom">
+            <p>© 2026 HarvestPredict</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
+    </footer>
+    <div class="modal" id="demoModal">
+
+        <div class="modal-content" id="modalBox">
+
+            <span class="close" onclick="closeModal()">&times;</span>
+
+            <h2>Request a Demo</h2>
+
+            <form id="demoForm">
+
+                <input type="text" id="name" placeholder="Full Name" required>
+                <input type="email" id="email" placeholder="Email Address" required>
+                <input type="text" placeholder="Farm Size / Location">
+
+                <p class="" id="formError"></p>
+
+                <button type="submit">Submit Request</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        const contactform = document.getElementById("contactForm");
+        const loader = document.querySelector(".loader");
+        const btnText = document.querySelector(".btn-text");
+
+        contactform.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let valid = true;
+
+            const name = document.getElementById("name");
+            const email = document.getElementById("email");
+            const message = document.getElementById("message");
+            const successMsg = document.getElementById("successMsg");
+
+            document.querySelectorAll(".error").forEach(e => e.innerText = "");
+            successMsg.innerText = "";
+
+            if (name.value.trim() === "") {
+                showError(name, "Required");
+                valid = false;
+            }
+
+            if (!validateEmail(email.value)) {
+                showError(email, "Invalid email");
+                valid = false;
+            }
+
+            if (message.value.trim() === "") {
+                showError(message, "Required");
+                valid = false;
+            }
+
+            if (valid) {
+                btnText.style.opacity = "0.5";
+                loader.style.display = "inline-block";
+
+                setTimeout(() => {
+                    loader.style.display = "none";
+                    btnText.style.opacity = "1";
+
+                    successMsg.innerText = "✅ Message sent successfully!";
+                    contactform.reset();
+                }, 1500);
+            }
+        });
+
+        function showError(input, msg) {
+            input.parentElement.querySelector(".error").innerText = msg;
+        }
+
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+    </script>
+</body>
+
+</html>

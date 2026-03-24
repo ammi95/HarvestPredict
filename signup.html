@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - HarvestPredict</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/signup.css">
+</head>
+
+<body>
+
+    <section class="signup">
+        <div class="logo">
+            <a href="/"><img src="assets/images/logo.png" alt=""></a>
+        </div>
+        <!-- Glow Background -->
+        <div class="bg-glow"></div>
+
+        <div class="signup-container">
+
+            <!-- LEFT -->
+            <div class="signup-left">
+                <h1>Create Account 🚀</h1>
+                <p>Start predicting crop yields with AI-powered insights.</p>
+            </div>
+
+            <!-- RIGHT FORM -->
+            <div class="signup-card">
+
+                <h2>Sign Up</h2>
+
+                <form id="signupForm">
+
+                    <div class="input-group">
+                        <input type="text" id="name" required>
+                        <label>Full Name</label>
+                        <span class="error"></span>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="email" id="email" required>
+                        <label>Email Address</label>
+                        <span class="error"></span>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" id="password" required>
+                        <label>Password</label>
+                        <span class="error"></span>
+                    </div>
+
+                    <!-- Strength -->
+                    <div id="strength"></div>
+
+                    <div class="input-group">
+                        <input type="password" id="confirmPassword" required>
+                        <label>Confirm Password</label>
+                        <span class="error"></span>
+                    </div>
+
+                    <button type="submit" class="btn-signup">
+                        <span class="btn-text">Create Account</span>
+                        <span class="loader"></span>
+                    </button>
+
+                    <p id="successMsg"></p>
+
+                    <p class="login-text">
+                        Already have an account? <a href="login.html">Login</a>
+                    </p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <script>
+        const form = document.getElementById("signupForm");
+        const loader = document.querySelector(".loader");
+        const btnText = document.querySelector(".btn-text");
+        const strength = document.getElementById("strength");
+
+        const passwordInput = document.getElementById("password");
+
+        passwordInput.addEventListener("input", () => {
+            const val = passwordInput.value;
+
+            if (val.length < 6) {
+                strength.innerText = "Weak password";
+                strength.style.color = "red";
+            } else if (val.match(/[A-Z]/) && val.match(/[0-9]/)) {
+                strength.innerText = "Strong password";
+                strength.style.color = "lightgreen";
+            } else {
+                strength.innerText = "Medium password";
+                strength.style.color = "orange";
+            }
+        });
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let valid = true;
+
+            const name = document.getElementById("name");
+            const email = document.getElementById("email");
+            const password = document.getElementById("password");
+            const confirmPassword = document.getElementById("confirmPassword");
+            const successMsg = document.getElementById("successMsg");
+
+            document.querySelectorAll(".error").forEach(e => e.innerText = "");
+            successMsg.innerText = "";
+
+            if (name.value.trim() === "") {
+                showError(name, "Required");
+                valid = false;
+            }
+
+            if (!validateEmail(email.value)) {
+                showError(email, "Invalid email");
+                valid = false;
+            }
+
+            if (password.value.length < 6) {
+                showError(password, "Min 6 characters");
+                valid = false;
+            }
+
+            if (password.value !== confirmPassword.value) {
+                showError(confirmPassword, "Passwords do not match");
+                valid = false;
+            }
+
+            if (valid) {
+                loader.style.display = "inline-block";
+                btnText.style.opacity = "0.5";
+
+                setTimeout(() => {
+                    loader.style.display = "none";
+                    btnText.style.opacity = "1";
+
+                    successMsg.innerText = "🎉 Account created successfully!";
+                    form.reset();
+                    strength.innerText = "";
+                }, 1500);
+            }
+        });
+
+        function showError(input, msg) {
+            input.parentElement.querySelector(".error").innerText = msg;
+        }
+
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+    </script>
+</body>
+
+</html>

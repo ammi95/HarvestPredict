@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - HarvestPredict</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+</head>
+
+<body>
+
+    <section class="login">
+        <div class="logo">
+            <a href="/"><img src="assets/images/logo.png" alt=""></a>
+        </div>
+        <!-- Background Glow -->
+        <div class="bg-glow"></div>
+
+        <div class="login-container">
+
+            <!-- LEFT SIDE -->
+            <div class="login-left">
+                <h1>Welcome Back 👋</h1>
+                <p>Login to access your AI-powered crop insights dashboard.</p>
+            </div>
+
+            <!-- RIGHT FORM -->
+            <div class="login-card">
+
+                <h2>Sign In</h2>
+
+                <form id="loginForm">
+
+                    <div class="input-group">
+                        <input type="email" id="email" required>
+                        <label>Email Address</label>
+                        <span class="error"></span>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" id="password" required>
+                        <label>Password</label>
+                        <span class="error"></span>
+                    </div>
+
+                    <div class="login-options">
+                        <label>
+                            <input type="checkbox"> Remember me
+                        </label>
+                        <a href="#">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="btn-login">
+                        <span class="btn-text">Login</span>
+                        <span class="loader"></span>
+                    </button>
+
+                    <p id="successMsg"></p>
+
+                    <p class="signup-text">
+                        Don’t have an account? <a href="signup.html">Sign Up</a>
+                    </p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+    <script>
+        const form = document.getElementById("loginForm");
+        const loader = document.querySelector(".loader");
+        const btnText = document.querySelector(".btn-text");
+
+        // 🔥 Dummy user (replace with API later)
+        const validUser = {
+            email: "test@gmail.com",
+            password: "123456"
+        };
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let valid = true;
+
+            const email = document.getElementById("email");
+            const password = document.getElementById("password");
+            const successMsg = document.getElementById("successMsg");
+
+            document.querySelectorAll(".error").forEach(e => e.innerText = "");
+            successMsg.innerText = "";
+
+            // Field validation
+            if (!validateEmail(email.value)) {
+                showError(email, "Invalid email format");
+                valid = false;
+            }
+
+            if (password.value.length < 6) {
+                showError(password, "Min 6 characters");
+                valid = false;
+            }
+
+            if (valid) {
+                loader.style.display = "inline-block";
+                btnText.style.opacity = "0.5";
+
+                setTimeout(() => {
+                    loader.style.display = "none";
+                    btnText.style.opacity = "1";
+
+                    // 🔥 Credential Check
+                    if (
+                        email.value === validUser.email &&
+                        password.value === validUser.password
+                    ) {
+                        successMsg.style.color = "#4ade80";
+                        successMsg.innerText = "✅ Login successful!";
+                        form.reset();
+                    } else {
+                        successMsg.style.color = "#ff6b6b";
+                        successMsg.innerText = "❌ Invalid credentials";
+                        form.reset();
+                    }
+
+                }, 1500);
+            }
+        });
+
+        function showError(input, msg) {
+            input.parentElement.querySelector(".error").innerText = msg;
+        }
+
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+    </script>
+</body>
+
+</html>

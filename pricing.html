@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HarvestPredict</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+
+            <!-- Logo -->
+            <div class="logo">
+                <a href="/"><img src="assets/images/logo.png" alt=""></a>
+            </div>
+
+            <!-- Nav Links -->
+            <nav class="nav-links" id="navLinks">
+                <a href="#">Home</a>
+                <a href="/#features">Features</a>
+                <a href="/#architecture">Architecture</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="contact.html">contact</a>
+            </nav>
+
+            <!-- Right Buttons -->
+            <div class="nav-actions">
+                <a href="login.html" class="login">Login</a>
+                <a href="javascript:void(0)" class="btn-primary" onclick="openModal()">Get Started</a>
+            </div>
+
+            <!-- Mobile Menu Icon -->
+            <div class="menu-toggle" id="menuToggle">
+                ☰
+            </div>
+
+        </div>
+    </header>
+    <section class="pricing">
+
+        <h2 class="section-title">Simple, Transparent Pricing</h2>
+        <p class="section-subtext">Choose the plan that fits your needs</p>
+
+        <div class="pricing-grid">
+
+            <!-- FREE -->
+            <div class="pricing-card">
+                <h3>Starter</h3>
+                <p class="price">₹0 <span>/month</span></p>
+
+                <ul>
+                    <li>✔ Basic Yield Prediction</li>
+                    <li>✔ Limited Data Access</li>
+                    <li>✔ 1 Field Analysis</li>
+                    <li>✖ No Reports</li>
+                </ul>
+
+                <a href="contact.html" class="btn-outline">Get Started</a>
+            </div>
+
+            <!-- PRO (Highlight) -->
+            <div class="pricing-card popular">
+                <div class="badge">Most Popular</div>
+
+                <h3>Pro</h3>
+                <p class="price">₹999 <span>/month</span></p>
+
+                <ul>
+                    <li>✔ Advanced Predictions</li>
+                    <li>✔ Scenario Comparison</li>
+                    <li>✔ Risk Analysis</li>
+                    <li>✔ Export Reports</li>
+                </ul>
+
+                <a href="#" class="btn-primary">Start Free Trial</a>
+            </div>
+
+            <!-- ENTERPRISE -->
+            <div class="pricing-card">
+                <h3>Enterprise</h3>
+                <p class="price">₹1999 <span>/month</span></p>
+
+                <ul>
+                    <li>✔ Unlimited Fields</li>
+                    <li>✔ API Access</li>
+                    <li>✔ Dedicated Support</li>
+                    <li>✔ Custom Models</li>
+                </ul>
+
+                <a href="contact.html" class="btn-outline">Get Started</a>
+            </div>
+
+        </div>
+
+    </section>
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- Column 1 -->
+            <div class="footer-col">
+                <h3>Product</h3>
+                <ul>
+                    <li><a href="/#features">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <!-- <li><a href="#">API</a></li> -->
+                </ul>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="footer-col">
+                <h3>Company</h3>
+                <ul>
+                    <!-- <li><a href="#">About</a></li> -->
+                    <li><a href="/#architecture">Architecture</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Docs</a></li>
+                    <!-- <li><a href="#">Blog</a></li> -->
+                    <li><a href="contact.html">Help Center</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4 -->
+            <div class="footer-col">
+                <h3>Social</h3>
+                <ul>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">GitHub</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Bottom -->
+        <div class="footer-bottom">
+            <p>© 2026 HarvestPredict</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
+    </footer>
+    <div class="modal" id="demoModal">
+
+        <div class="modal-content" id="modalBox">
+
+            <span class="close" onclick="closeModal()">&times;</span>
+
+            <h2>Request a Demo</h2>
+
+            <form id="demoForm">
+
+                <input type="text" id="name" placeholder="Full Name" required>
+                <input type="email" id="email" placeholder="Email Address" required>
+                <input type="text" placeholder="Farm Size / Location">
+
+                <p class="" id="formError"></p>
+
+                <button type="submit">Submit Request</button>
+
+            </form>
+
+        </div>
+
+    </div>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
