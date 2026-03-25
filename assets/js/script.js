@@ -47,6 +47,25 @@ $(document).ready(function () {
         nav: false,
         animateOut: 'fadeOut'
     });
+    function nextSlide() {
+        var slider = $('.slider');
+        var items = $('.item');
+        slider.append(items.first());
+    }
+
+    // Function to move to the previous slide
+    function prevSlide() {
+        var slider = $('.slider');
+        var items = $('.item');
+        slider.prepend(items.last());
+    }
+
+    // Event listeners for manual navigation
+    $('.next').on('click', nextSlide);
+    $('.prev').on('click', prevSlide);
+
+    // Set an interval to automatically move to the next slide every 3 seconds
+    setInterval(nextSlide, 3000);
 });
 
 const ctx = document.getElementById('yieldChart').getContext('2d');
