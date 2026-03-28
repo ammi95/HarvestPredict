@@ -11,7 +11,10 @@
 <body>
     <header class="navbar">
         <div class="nav-container">
-
+            <div class="nav-actions">
+                <a href="login.html" class="login">Login</a>
+                <a href="javascript:void(0)" class="btn-primary" onclick="openModal()">Get Started</a>
+            </div>
             <!-- Logo -->
             <div class="logo">
                 <a href="/"><img src="assets/images/logo.png" alt=""></a>
@@ -23,7 +26,7 @@
                 <a href="/#features">Features</a>
                 <a href="/#architecture">Architecture</a>
                 <a href="pricing.html">Pricing</a>
-                <a href="contact.html">contact</a>
+                <a href="contact.html">Contact</a>
                 <div class="nav-actions mobile-cta">
                     <a href="login.html" class="login">Login</a>
                     <a href="javacript:void(0)" class="btn-primary" onclick="openModal()">Get Started</a>
@@ -31,10 +34,7 @@
             </nav>
 
             <!-- Right Buttons -->
-            <div class="nav-actions">
-                <a href="login.html" class="login">Login</a>
-                <a href="javascript:void(0)" class="btn-primary" onclick="openModal()">Get Started</a>
-            </div>
+
 
             <!-- Mobile Menu Icon -->
             <div class="menu-toggle" id="menuToggle">
@@ -56,8 +56,10 @@
                 <p>We’d love to hear from you. Send us a message and we’ll respond quickly.</p>
 
                 <div class="contact-details">
-                    <div>📧 support@harvestpredict.com</div>
-                    <div>📍 India</div>
+                    <div>📧 hello@harvestpredict.com.au</div>
+                    <div>📍 HarvestPredict Technologies Pty Ltd
+                        Level 28, 108 St Georges Terrace
+                        Perth, WA 6000, Australia</div>
                 </div>
             </div>
 
@@ -132,9 +134,9 @@
             <div class="footer-col">
                 <h3>Social</h3>
                 <ul>
-                    <li><a href="#">LinkedIn</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">GitHub</a></li>
+                    <li><a href="contact.html">LinkedIn</a></li>
+                    <li><a href="contact.html">Twitter</a></li>
+                    <li><a href="contact.html">GitHub</a></li>
                 </ul>
             </div>
 
@@ -143,10 +145,7 @@
         <!-- Bottom -->
         <div class="footer-bottom">
             <p>© 2026 HarvestPredict</p>
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms</a>
-            </div>
+
         </div>
     </footer>
     <div class="modal" id="demoModal">
@@ -161,7 +160,8 @@
 
                 <input type="text" id="name" placeholder="Full Name" required>
                 <input type="email" id="email" placeholder="Email Address" required>
-                <input type="text" placeholder="Farm Size / Location">
+                <input type="text" placeholder="Farm Size">
+                <input type="text" placeholder="City">
 
                 <p class="" id="formError"></p>
 
