@@ -160,8 +160,8 @@
 
                 <input type="text" id="name" placeholder="Full Name" required>
                 <input type="email" id="email" placeholder="Email Address" required>
-                <input type="text" placeholder="Farm Size">
-                <input type="text" placeholder="City">
+                <input type="text" id="farm" placeholder="Farm Size" required>
+                <input type="text" placeholder="City" required>
 
                 <p class="" id="formError"></p>
 
@@ -228,6 +228,9 @@
         function validateEmail(email) {
             return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         }
+        document.getElementById("farm").addEventListener("input", function () {
+            this.value = this.value.replace(/[^0-9]/g, "");
+        });
     </script>
 </body>
 
