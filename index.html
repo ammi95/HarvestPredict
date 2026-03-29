@@ -7,7 +7,7 @@
     <title>HarvestPredict</title>
     <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
-    
+
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
     <link rel="stylesheet"
@@ -447,7 +447,7 @@
 
                         <input type="text" id="name" placeholder="Full Name" required>
                         <input type="email" id="email" placeholder="Email Address" required>
-                        <input type="text" id="farm" maxlength="10" placeholder="Farm Size" required>
+                        <input type="number" id="farm" maxlength="10" placeholder="Farm Size" required>
                         <input type="text" placeholder="City" required>
 
                         <p class="" id="formError"></p>
@@ -463,8 +463,10 @@
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script src="assets/js/script.js"></script>
             <script>
-                document.getElementById("farm").addEventListener("input", function () {
-                    this.value = this.value.replace(/[^0-9]/g, "");
+                const farmInput = document.getElementById("farm");
+
+                farmInput.addEventListener("input", function () {
+                    this.value = this.value.replace(/[^0-9]/g, "").slice(0, 10);
                 });
             </script>
 
