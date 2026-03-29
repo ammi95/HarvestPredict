@@ -8,6 +8,21 @@
     <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .input-box {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #666;
+        }
+    </style>
 </head>
 
 <body>
@@ -49,6 +64,7 @@
                     <div class="input-group">
                         <input type="password" id="password" required>
                         <label>Password</label>
+                        <i class="fa-solid fa-eye toggle-password togglePassword"></i>
                         <span class="error"></span>
                     </div>
 
@@ -58,6 +74,7 @@
                     <div class="input-group">
                         <input type="password" id="confirmPassword" required>
                         <label>Confirm Password</label>
+                        <i class="fa-solid fa-eye toggle-password togglePassword"></i>
                         <span class="error"></span>
                     </div>
 
@@ -159,6 +176,19 @@
         function validateEmail(email) {
             return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         }
+        const toggles = document.querySelectorAll(".toggle-password");
+
+        toggles.forEach(toggle => {
+            toggle.addEventListener("click", function () {
+                const input = this.parentElement.querySelector("input");
+
+                const type = input.getAttribute("type") === "password" ? "text" : "password";
+                input.setAttribute("type", type);
+
+                this.classList.toggle("fa-eye");
+                this.classList.toggle("fa-eye-slash");
+            });
+        });
     </script>
 </body>
 
